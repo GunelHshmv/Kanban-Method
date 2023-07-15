@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    .dragging{
+      background-color: dark;
+    }
+    .x-type {
+  box-shadow: 5px 10px 2px rgb(197, 205, 208);
+}
+h3{
+  text-shadow: 1px 1px rgb(18, 97, 215);
+}
+h1{
+  text-shadow: 1px 1px rgb(18, 97, 215);
+
+}
+  </style>
+  <body style="background-color: rgb(29, 29, 96);" >
+    <div
+      class=" d-flex flex-column gap-5 "
+      style="
+        width: 100%; 
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+      "
+      id="con"
+    >
+    
+      <div class="bg-light border  border-dark border-1 border-top-0 rounded-5 " id="mainDiv" style="width: 70%;">
+        <h1 class="p-3"><i><b>Kanban Method</b></i></h1>
+        <form>
+          <div class="mb-3">
+            <input
+              type="text"
+              id="enterId"
+              class="form-control border border-success rounded px-3 mx-3 border-1  rounded-5 "
+              style="width: 40%"
+              placeholder="Enter Task"
+            />
+          </div>
+        </form>
+        <div class="bg-light mx-3 mb-3 px-3 d-flex d-none flex-row justify-content-between border border-success rounded"  id="moduleDiv">
+          <div class="leftSide  mb-2 " style="width: 50%;">
+            <div class="border border-success rounded mt-2" id="descriptionDiv" style="width: 100%; height: 80px;">
+              <h5 class="px-3 pt-1">Description</h5>
+              <input type="text" id="desInp" class="form-control px-3 pb-1 mx-3 border-success" style="width: 80%" placeholder="Enter Description">
+            </div>
+            <div class="border border-success rounded mt-2" id="descriptionDiv" style="width: 100%; height: 80px;">
+              <h5 class="px-3 pt-1">Title</h5>
+              <input type="text" id="titleInp" class="form-control px-3 pb-1 mx-3 border-success" style="width: 80%" placeholder="Enter Title">
+            </div>
+            <div class="border border-success rounded mt-2" id="descriptionDiv" style="width: 100%; height: 80px;">
+              <h5 class="px-3 pt-1">User</h5>
+              <input type="text" id="userInp" class="form-control px-3 pb-1 mx-3 border-success" style="width: 80%" placeholder="Enter User">
+            </div>
+          </div>
+          <div class="border border-success mt-2 mb-2" id="rightSide" style="width: 30%;">
+                <div id="photoDiv">
+                 <input type="file" id="photoInp">
+                </div>
+          </div>
+        </div>
+        <div class="bg-light mx-3 mb-3 px-3 d-flex d-none flex-row justify-content-between border border-success rounded"  id="nextmoduleDiv">
+          <div class="leftSide  mb-2 " style="width: 50%;">
+            <div class="border border-success rounded mt-2"  id="descriptionDiv" style="width: 100%; height: 80px;">
+              <h5 class="px-3 pt-1">Description</h5>
+              <input type="text"  id="desInp2" class="form-control px-3 pb-1 mx-3 border-success" style="width: 80%" placeholder="Enter Description">
+            </div>
+            <div class="border border-success rounded mt-2" id="descriptionDiv" style="width: 100%; height: 80px;">
+              <h5 class="px-3 pt-1">Title</h5>
+              <input type="text" id="titleInp2" class="form-control px-3 pb-1 mx-3 border-success" style="width: 80%" placeholder="Enter Title">
+            </div>
+            <div class="border border-success rounded mt-2" id="descriptionDiv" style="width: 100%; height: 80px;">
+              <h5 class="px-3 pt-1">User</h5>
+              <input type="text" id="userInp2" class="form-control px-3 pb-1 mx-3 border-success" style="width: 80%" placeholder="Enter User">
+            </div>
+                      <button
+            type="button"
+            id="backBtn"
+            class="btn btn-primary px-3 mx-3 mt-3 mb-3"
+          >
+            back
+          </button>
+          </div>
+          <div class="border border-success mt-2 mb-2" id="rightSide" style="width: 30%;">
+                <div id="photoDiv">
+                 <input type="file" id="photoInp2">
+                </div>
+          </div>
+        </div>
+          <button type="button" id="addBtn" class="btn btn-primary border border-dark px-3 mx-3 mb-3 border-1 border-top-0 rounded-5" style="background-color: rgb(29, 29, 96);" ><i><b>Add Data</b></i></button>
+        </div>
+           <div class="container  d-flex flex-row justify-content-between  " style="width: 70%; display: block;" id="allDivs" >
+            <div class="border bg-light  border-dark border-1 border-top-0 rounded-5 pb-2  divs" id="firstDiv" ondrop="drop(event)" ondragover="allowDrop(event)"  style="height: 100%; width: 23%;">
+              <h3 class="pt-2 px-3 " id="todo"><i><b>TODO</b></i></h3>
+              <div  id="fInnerDiv">
+              </div>
+            </div>
+              <div class="border bg-light border-dark border-1 border-top-0 rounded-5 pb-3 divs shadow  mb-5 bg-body-tertiary rounded"  ondrop="drop(event)" ondragover="allowDrop(event)" id="secondDiv" style="height: 100%; width: 23%;">
+              <h3 class="pt-2   px-3"><i><b>Progress</b></i></h3>
+            </div>
+            <div class="border bg-light  border-dark border-1 border-top-0 rounded-5 pb-3 divs shadow-lg  mb-5 bg-body-tertiary rounded "  ondrop="drop(event)" ondragover="allowDrop(event)" id="fourthDiv" style="height: 100%; width: 23%;">
+              <h3 class="pt-2 px-3"><i><b>InReview</b></i></h3>
+            </div>
+            <div class="border bg-light  border-dark border-1 border-top-0 rounded-5 pb-3 divs"  ondrop="drop(event)" ondragover="allowDrop(event)" id="threedDiv" style="height: 100%; width: 23%;">
+              <h3 class="pt-2 px-3" id="doneId"><i><b>Done</b></i></h3>
+            </div>
+           </div>
+    <script src="../javascript/kanban.js"></script>
+  </body>
+</html>
